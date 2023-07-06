@@ -1,8 +1,23 @@
 import { useSearchParams } from "react-router-dom";
+import ListComponent from "../../components/board/ListComponent";
 
+const checkNull = (obj) => {
+
+    const result = {}
+
+    for (const attr in obj) {
+        const attrName = attr
+        const attrValue = obj[attr]
+
+        if(attrValue && attrValue !== null){
+            result[attrName] = attrValue
+        }
+    }
+
+    return result
+}
 
 const ListPage = () => {
-
 
     const [search, setSearch] = useSearchParams()
 
@@ -13,14 +28,23 @@ const ListPage = () => {
     const type = search.get("type")
     const keyword = search.get("keyword")
 
-    const queryObj = {page, size, type, keyword}
+    const queryObj = checkNull({page, size, type, keyword})
+
     console.log(queryObj)
 
+    const movePage = (num) => {
+        console.log("num===" , num)
+        queryObj.page = num
+        setSearch({...queryObj})
+    }
     
+
+
 
     return ( 
         <div>
             Board List Page
+            <ListComponent queryObj={queryObj} movePage={movePage}></ListComponent>
         </div>
      );
 }
