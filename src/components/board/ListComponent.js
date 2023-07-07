@@ -2,6 +2,7 @@ import { createSearchParams } from "react-router-dom";
 import { getList } from "../../api/boardAPI";
 import { useEffect, useState } from "react";
 
+
 const initState = {
     dtoList:[],
     end:0,
@@ -37,6 +38,7 @@ const ListComponent = ({queryObj, movePage}) => {
         <div>
             <div>
                 <div>ListComponent</div>
+                
             </div>
             <div>
                 <ul>
@@ -47,7 +49,6 @@ const ListComponent = ({queryObj, movePage}) => {
 
             <div >
                 <ul className="flex m-4 p-2">
-
                     {listData.prev ? <li
                     className="m-2 p-2 bg-blue-200 border-2  font-bold rounded-2xl"
                     onClick={() => handleClickPage(listData.start -1)}
@@ -64,7 +65,6 @@ const ListComponent = ({queryObj, movePage}) => {
                     onClick={() => handleClickPage(listData.end +1)}
                     >NEXT</li>:<></>}
                 </ul>
-
             </div>
 
         </div>
