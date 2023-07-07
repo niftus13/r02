@@ -45,6 +45,10 @@ const ListPage = () => {
         queryObj.keyword = keyword
         setSearch({...queryObj})
     }
+
+    const moveRead = (bno) => {
+        console.log("moveRead", bno)
+    }
     
 
 
@@ -52,8 +56,16 @@ const ListPage = () => {
     return ( 
         <div>
             Board List Page
-            <ListSearchComponent queryObj={queryObj} moveSearch={moveSearch}></ListSearchComponent>
-            <ListComponent queryObj={queryObj} movePage={movePage}></ListComponent>
+            <ListSearchComponent 
+            queryObj={queryObj} 
+            moveSearch={moveSearch}>
+            </ListSearchComponent>
+            
+            <ListComponent 
+            queryObj={queryObj} 
+            movePage={movePage} 
+            moveRead={moveRead}>
+            </ListComponent>
         </div>
      );
 }

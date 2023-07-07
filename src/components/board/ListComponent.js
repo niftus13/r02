@@ -1,6 +1,7 @@
 import { createSearchParams } from "react-router-dom";
 import { getList } from "../../api/boardAPI";
 import { useEffect, useState } from "react";
+import ListPageComponent from "../../common/ListPageComponent";
 
 
 const initState = {
@@ -15,7 +16,7 @@ const initState = {
     requestDTO:null
 }
 
-const ListComponent = ({queryObj, movePage}) => {
+const ListComponent = ({queryObj, movePage, moveRead}) => {
 
     const [listData, setListData] = useState(initState)
 
@@ -30,9 +31,6 @@ const ListComponent = ({queryObj, movePage}) => {
     // use*** = 컴포넌트 안에서만. 아닐경우는 함수로 사용가능
     // console.log(createSearchParams(queryObj).toString())
 
-    const handleClickPage = (pageNum) => {
-        movePage(pageNum)
-    }
 
     return ( 
         <div>
@@ -43,29 +41,14 @@ const ListComponent = ({queryObj, movePage}) => {
             <div>
                 <ul>
                     {listData.dtoList.map(
-                        dto => <li key={dto.bno}>{dto.bno} - {dto.title} - {dto.replyCount}</li>)}
+                        dto => 
+                        <li key={dto.bno}
+                        onClick={() => moveRead(dto.bno)}
+                        >{dto.bno} - {dto.title} - {dto.replyCount}</li>)}
                 </ul>
             </div>
 
-            <div >
-                <ul className="flex m-4 p-2">
-                    {listData.prev ? <li
-                    className="m-2 p-2 bg-blue-200 border-2  font-bold rounded-2xl"
-                    onClick={() => handleClickPage(listData.start -1)}
-                    >PREV</li>:<></>}
-
-                    {listData.pageNums.map(num => 
-                    <li 
-                    className="m-2 p-2 bg-blue-200 border-2  font-bold rounded-2xl"
-                    onClick={() => handleClickPage(num)}
-                    key={num}>{num}</li>)}
-
-                    {listData.next ? <li
-                    className="m-2 p-2 bg-blue-200 border-2  font-bold rounded-2xl"
-                    onClick={() => handleClickPage(listData.end +1)}
-                    >NEXT</li>:<></>}
-                </ul>
-            </div>
+            <ListPageComponent movePage={movePage} {...listData}></ListPageComponent>
 
         </div>
      );
