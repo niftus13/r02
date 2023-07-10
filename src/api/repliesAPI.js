@@ -1,11 +1,5 @@
 import axios from "axios"
 
-
-
-
-
-
-
 export const getRepliesOfBoard = async (bno, page = 1, last = false) => {
 
   const res = await axios.get(`http://localhost:8080/api/replies/${bno}/list?page=${page}&last=${last}`)

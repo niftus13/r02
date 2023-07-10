@@ -14,7 +14,7 @@ const initState = {
     requestDTO:null
 }
 
-const ReplyList = ({bno, page, last, movePage}) => {
+const ReplyList = ({bno, page, last,refresh, movePage}) => {
 
     console.log("Reply list...bno" + bno)
 
@@ -25,10 +25,11 @@ const ReplyList = ({bno, page, last, movePage}) => {
         
 
         getRepliesOfBoard(bno, page, last).then(data => {
-            console.log("Reply list......" + data)
+            console.log("data......")
             setListData(data)
         })
-    }, [bno, page, last])
+
+    }, [bno, page, last, refresh])
 
     return ( 
         <div>
