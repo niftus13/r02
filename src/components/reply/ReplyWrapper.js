@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import ReplyList from "./ReplyList";
 import ReplyInput from "./ReplyInput";
+import ReplyRead from "./ReplyRead";
 
 const initState = {
     bno: 0,
     page: 1,
     last: false,
-    refresh: false
+    refresh: false,
+    current:0
 }
 
 const ReplyWrapper = ({bno}) => {
@@ -22,6 +24,12 @@ const ReplyWrapper = ({bno}) => {
         setData({...data})
 
     }, [bno])
+
+    const changeCurrent = (rno) => {
+
+        data.current = rno
+        setData({...data})
+    }
 
     const movePage = (num) => {
 
@@ -40,10 +48,17 @@ const ReplyWrapper = ({bno}) => {
         setData({...data})
     }
 
+    const cancelRead = () => {
+        
+        data.current = 0
+        setData({...data})
+    }
+
     return ( 
         <div>
             <ReplyInput bno={bno} refreshLast={refreshLast}></ReplyInput>
-            <ReplyList {...data} movePage={movePage}></ReplyList>
+            {data.current != 0 ? <ReplyRead rno={data.current} cancelRead={cancelRead}></ReplyRead>:<></>}
+            <ReplyList {...data} movePage={movePage} changeCurrent={changeCurrent}></ReplyList>
         </div>
      );
 }
