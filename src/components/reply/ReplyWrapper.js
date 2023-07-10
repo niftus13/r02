@@ -54,8 +54,13 @@ const ReplyWrapper = ({bno}) => {
         setData({...data})
     }
 
-    const refreshPage = () => {
+    const refreshPage = (hide) => {
         data.refresh = !data.refresh
+
+        if(hide) {
+            data.current = 0
+        }
+        
         setData({...data})
     }
 
