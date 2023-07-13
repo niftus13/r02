@@ -43,7 +43,7 @@ const ListComponent = ({queryObj, movePage, moveRead}) => {
                     {listData.dtoList.map(
                         dto => 
                         <li 
-                        className="w-2/5 h-[300px] m-2 p-2 rounded-md  shadow-md bg-orange-300"
+                        className="w-2/5 h-[350px] m-2 p-2 rounded-md  shadow-md bg-orange-300"
                         key={dto.pno}
                         onClick={() => moveRead(dto.pno)}
                         >

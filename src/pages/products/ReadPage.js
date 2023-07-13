@@ -5,7 +5,7 @@ import ReadComponent from "../../components/products/ReadComponent"
 
 const ReadPage = () => {
 
-    const {queryObj, setSearch, moveRead, moveList} = useQueryObj()
+    const {queryObj, setSearch, moveRead, moveList, moveModify} = useQueryObj()
     const {pno} = useParams()
 
     console.log(pno)
@@ -14,7 +14,11 @@ const ReadPage = () => {
 
     return ( 
         <div>
-            <ReadComponent pno={pno}></ReadComponent>
+            <ReadComponent 
+            pno={pno} 
+            moveModify={moveModify} 
+            moveList={moveList}>
+            </ReadComponent>
         </div>
      );
 }

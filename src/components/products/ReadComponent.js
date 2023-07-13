@@ -12,7 +12,7 @@ const initState = {
 
 
 
-const ReadComponent = ({pno}) => {
+const ReadComponent = ({pno, moveModify, moveList}) => {
 
     const [product, setProduct] = useState(initState)
 
@@ -20,6 +20,9 @@ const ReadComponent = ({pno}) => {
         
         getProduct(pno).then(data => {
             setProduct(data)
+        }).catch(e => {
+            console.log(e)
+            moveList()
         })
 
     },[pno])
@@ -28,7 +31,6 @@ const ReadComponent = ({pno}) => {
     return ( 
         <div>
             <div className="m-2 p-2">
-                <h1>Input</h1>
                 <div className="m-2 p-2 border-2">
                 {product.pname}
                 </div>
@@ -39,11 +41,25 @@ const ReadComponent = ({pno}) => {
                     {product.price}
                 </div>
                 <div className="m-2 p-2 border-2">
-                    {product.images.map((fname,idx) => 
-                    <li key={idx}>
-                       <img src={`http://localhost/${fname}`}></img>
-                    </li>
-                    )}
+                    <ul>
+                        {product.images.map((fname,idx) => 
+                        <li key={idx}>
+                            <img src={`http://localhost/${fname}`}></img>
+                        </li>
+                        )}
+                    </ul>
+                </div>
+                <div>
+                    <button
+                    className="bg-blue-300 border-2 m-2 p-2 text-white font-bold"
+                    onClick={()=> moveModify(product.pno)}>
+                        Modify
+                    </button>
+                    <button
+                    className="bg-blue-300 border-2 m-2 p-2 text-white font-bold"
+                    onClick={moveList}>
+                        List
+                    </button>
                 </div>
             </div>
         </div>
