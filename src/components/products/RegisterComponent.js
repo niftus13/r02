@@ -33,7 +33,12 @@ const RegisterComponent = ({moveList}) => {
             formData.append("files", file)
         }
 
-        postProduct(formData)
+        postProduct(formData).then(data => {
+            const rno = data.result
+            alert(`${rno} 번이 등록되었습니다.`)
+            moveList()
+        })
+        
         
     }
 
