@@ -1,5 +1,5 @@
 import { createSearchParams } from "react-router-dom";
-import { getList } from "../../api/boardAPI";
+import { getList } from "../../api/productAPI";
 import { useEffect, useState } from "react";
 import ListPageComponent from "../common/ListPageComponent";
 
@@ -39,12 +39,27 @@ const ListComponent = ({queryObj, movePage, moveRead}) => {
                 
             </div>
             <div>
-                <ul>
+                <ul className="flex flex-wrap container justify-center font-Archivo">
                     {listData.dtoList.map(
                         dto => 
-                        <li key={dto.bno}
-                        onClick={() => moveRead(dto.bno)}
-                        >{dto.bno} - {dto.title} - {dto.replyCount}</li>)}
+                        <li 
+                        className="w-2/5 h-[300px] m-2 p-2 rounded-md  shadow-md bg-orange-300"
+                        key={dto.pno}
+                        onClick={() => moveRead(dto.pno)}
+                        >
+                            <div className="">
+                                <div className="text-white">
+                                    {dto.pno}
+                                </div>
+                                <div className="flex justify-center items-center">
+                                    <img src={`http://localhost/s_${dto.fname}`} alt="ddd"></img>
+                                </div>
+                                <div className="justify-center text-center">{dto.pname} - {dto.price}</div> 
+                                <div>
+                                    리뷰 : {dto.reviewCnt} - {dto.reviewAvg}
+                                </div>
+                            </div>
+                             </li>)}
                 </ul>
             </div>
 

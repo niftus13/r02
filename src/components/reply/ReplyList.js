@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {getRepliesOfBoard} from "../../api/repliesAPI"
-import ListPageComponent from "../../common/ListPageComponent";
+import ListPageComponent from "../common/ListPageComponent";
 
 const initState = {
     dtoList:[],
