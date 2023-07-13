@@ -30,7 +30,7 @@ const ReadComponent = ({pno, moveModify, moveList}) => {
 
     return ( 
         <div>
-            <div className="m-2 p-2">
+            <div className="m-2 p-2 text-white">
                 <div className="m-2 p-2 border-2">
                 {product.pname}
                 </div>

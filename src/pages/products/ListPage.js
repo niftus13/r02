@@ -15,7 +15,7 @@ const ListPage = () => {
 
 
     return ( 
-        <div className="text-3xl">
+        <div className="text-3xl bg-slate-800">
             Products_ListPage
 
             <ListComponent 

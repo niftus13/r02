@@ -50,23 +50,23 @@ const RegisterComponent = ({moveList}) => {
 
 
     return ( 
-        <div className="bg-slate-400 text-2xl">
+        <div className="bg-slate-400 text-2xl text-white">
             <h1>Input</h1>
-            <div>
+            <div className="m-2 p-2">
                 <input type="text" name="pname" value={product.pname} onChange={handleChange}></input>
             </div>
-            <div>
+            <div className="m-2 p-2">
                 <input type="text" name="pdesc" value={product.pdesc} onChange={handleChange}></input>
             </div>
-            <div>
+            <div className="m-2 p-2">
                 <input type="number" name="price" value={product.price} onChange={handleChange}></input>
             </div>
-            <div>
+            <div className="m-2 p-2">
                 <input type="file" name="images" ref={fileRef} onChange={handleChange} multiple></input>
             </div>
             <div>
-                <button onClick={handleClickSave}>SAVE</button>
-                <button onClick={handleCilckClear}>CLEAR FILES</button>
+                <button onClick={handleClickSave} className="m-2 p-2">SAVE</button>
+                <button onClick={handleCilckClear} className="m-2 p-2">CLEAR FILES</button>
             </div>
         </div>
      );
