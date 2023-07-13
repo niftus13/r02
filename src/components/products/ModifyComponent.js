@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { deleteProduct, getProduct } from "../../api/productAPI"
+import { deleteProduct, getProduct, putProduct } from "../../api/productAPI"
 
 
 const initState = {
@@ -33,14 +33,28 @@ const ModifyComponent = ({pno, moveList, moveRead}) => {
     }
 
     const handleChange = (e) => {
+
+        console.log("handle change..........")
         product[e.target.name] = e.target.value
+
         setProduct({...product})
+    }
+
+    const handleClickDelImg = (fname)=>{
+
+        const newArr =product.images.filter(ele => ele !== fname)
+
+        product.images = newArr
+
+        setProduct({...product})
+
     }
 
     const handleClickModify = () => {
 
-        const formData = new FormData()
+        const formData = new FormData();
 
+        formData.append("pno", product.pno)
         formData.append("pname", product.pname)
         formData.append("pdesc", product.pdesc)
         formData.append("price", product.price)
@@ -56,6 +70,11 @@ const ModifyComponent = ({pno, moveList, moveRead}) => {
         for(let file of arr) {
             formData.append("files", file)
         }
+
+        putProduct(formData).then(data => {
+            alert("수정되었습니다.")
+            moveRead(pno)
+        })
 
     }
 
@@ -83,8 +102,8 @@ const ModifyComponent = ({pno, moveList, moveRead}) => {
                 type="number" name="price" value={product.price} 
                 onChange={handleChange}></input>
             </div>
-            <div>
-                <input type="file" name="images" ref={fileRef} ></input>
+            <div className="m-2 p-2 border-2">
+                <input type='file' ref={fileRef} multiple name='images'></input>
             </div>
 
             <div className="m-2 p-2 border-2">
@@ -93,6 +112,8 @@ const ModifyComponent = ({pno, moveList, moveRead}) => {
                     <li key={idx}
                     className="m-2">
                         <img src={`http://localhost/s_${fname}`}></img>
+                        <button className="bg-red-700 m-2 p-2 text-white"
+                        onClick={() => handleClickDelImg(fname)}>X</button>
                     </li>
                     )}
                 </ul>
@@ -101,7 +122,7 @@ const ModifyComponent = ({pno, moveList, moveRead}) => {
             <div>
             <button
                 className="bg-yellow-400 border-2 m-2 p-2 text-white font-bold"
-                onClick={moveList}>
+                onClick={handleClickModify}>
                 Modify
             </button>
             <button
