@@ -1,16 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit";
-
+import { createSlice } from "@reduxjs/toolkit"
 
 
 const countSlice = createSlice({
-    name : "CountSlice",
-    initialState : {num : 5},
-    reducers: {
-        inc : (state) => { 
-            console.log("inc...")
+    name : "countSlice",
+    initialState : {num:5},
+    reducers : {
+        inc : (state , param, third) => {
+            console.log(state)
+            console.log(param)
+            console.log(third)
+            return {num : state.num + param.payload}
         },
-        dec: (state) => {
-            console.log("dec...")
+        dec : (state, param, third) => {
+            console.log(state)
+            console.log(param)
+            console.log(third)
+            return {num : state.num - param.payload}
         }
     }
 })
