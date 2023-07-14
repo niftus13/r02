@@ -7,7 +7,10 @@ const LoginPage = () => {
     return ( 
         <BasicLayout>
             <div>Login Page</div>
-            <LoginComponent></LoginComponent>
+            <div className=" text-center h-[80vh]">
+                <LoginComponent></LoginComponent>
+            </div>
+            
         </BasicLayout>
      );
 }

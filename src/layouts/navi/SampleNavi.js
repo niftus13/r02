@@ -23,7 +23,7 @@ const SampleNavi = () => {
                 <div className="m-3 p-2 text-3xl border-b-2">
                     <Link to={"/board/list"}>Board</Link>
                 </div>
-                <div>
+                <div className=" ml-[60vh]">
                     <LoginNavi></LoginNavi>
                 </div>
             </div>
