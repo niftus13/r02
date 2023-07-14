@@ -8,6 +8,6 @@ export const setCookie = (cookieName, value, days) =>{
     const expires = new Date()
     expires.setUTCDate(expires.getUTCDate() + days)
 
-    cookies.set()
+    cookies.set(cookieName, value, { path: "/", expires: expires})
 
 }
