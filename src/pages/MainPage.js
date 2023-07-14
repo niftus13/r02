@@ -1,4 +1,4 @@
-import TodoInput from "../components/todo/TodoInput";
+
 import TodoList from "../components/todo/TodoList";
 import BasicLayout from "../layouts/BasicLayout";
 
@@ -15,7 +15,6 @@ const MainPage = () => {
 
 
             <TodoList></TodoList>
-            <TodoInput></TodoInput>
         </BasicLayout>
 
      );
