@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import LoginNavi from "./LoginNavi";
 
 const SampleNavi = () => {
 
@@ -21,6 +22,9 @@ const SampleNavi = () => {
                 </div>
                 <div className="m-3 p-2 text-3xl border-b-2">
                     <Link to={"/board/list"}>Board</Link>
+                </div>
+                <div>
+                    <LoginNavi></LoginNavi>
                 </div>
             </div>
         </div>
