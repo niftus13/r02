@@ -1,4 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getCookies, setCookie } from "../util/cookieUtil";
+
+const loadCookie = () => {
+
+    const loginObj = getCookies("login")
+    console.log("login.......obj........")
+    console.log(loginObj)
+
+    if(!loginObj){
+        return initState
+    }
+
+    return loginObj
+}
 
 
 const initState = {
@@ -9,12 +23,16 @@ const initState = {
 
 const loginSlice = createSlice({
     name : "loginSlice",
-    initialState : initState,
+    initialState : loadCookie(),
     reducers : {
         requestLogin : (state , param) => {
             const payload = param.payload
             console.log("requestLogin : ",payload)
-            return {email : payload.email, signed : true}
+            const loginObj = {email : payload.email, signed : true}
+
+            setCookie("login", JSON.stringify(loginObj), 1)
+
+            return loginObj
 
         }
     }

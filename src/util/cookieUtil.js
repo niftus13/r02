@@ -11,3 +11,13 @@ export const setCookie = (cookieName, value, days) =>{
     cookies.set(cookieName, value, { path: "/", expires: expires})
 
 }
+
+export const getCookies = (cookieName) => {
+
+    return cookies.get(cookieName)
+}
+
+export const removeCookies = (cookieName, path="/") => {
+
+    cookies.remove(cookieName, {path:path})
+}
