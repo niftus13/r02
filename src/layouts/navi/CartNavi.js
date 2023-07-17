@@ -14,6 +14,7 @@ const CartNavi = () => {
 
     useEffect(() => {
         dispatch(getCartThunk)
+        
         if(!email){
             return
         }
