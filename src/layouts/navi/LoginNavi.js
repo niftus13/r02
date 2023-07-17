@@ -15,6 +15,9 @@ const LoginNavi = () => {
                 <div>
                     {email} - {nickname}
                 </div>
+                <div>
+                    <Link to={"/member/logout"}>LOGOUT</Link>
+                </div>
                 <CartNavi></CartNavi>
             </div>
 
