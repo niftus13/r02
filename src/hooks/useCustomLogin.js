@@ -11,17 +11,17 @@ const useCustomLogin = (fn) => {
     useEffect(() => {
 
         if(fn){
-            if(!loginInfo.signed){
+            if(!loginInfo.email){
                 fn(navigate)
             }
             return
         }
 
-        console.log(loginInfo.signed)
-        if(!loginInfo.signed){
+        console.log(loginInfo.email)
+        if(!loginInfo.email){
             navigate("/member/login")
         }
-    },[loginInfo.signed])
+    },[loginInfo.email])
 
     return {loginInfo}
 }

@@ -1,5 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getCookies, setCookie } from "../util/cookieUtil";
+import { postLogin } from "../api/memberAPI";
+
+export const postLoginThunk = 
+    createAsyncThunk('postLoginThunk', (params) => {
+        return postLogin(params)
+    })
+
 
 const loadCookie = () => {
 
@@ -17,7 +24,10 @@ const loadCookie = () => {
 
 const initState = {
     email : '',
-    signed : false
+    nickname:'',
+    admin: false,
+    loading : false,
+    errorMsg : ''
 }
 
 
@@ -35,9 +45,37 @@ const loginSlice = createSlice({
             return loginObj
 
         }
+    },
+    extraReducers : (builder) => {
+        builder
+        .addCase(postLoginThunk.fulfilled, (state, action) => {
+            console.log("fulfilled" , action.payload)
+            const {email, nickname, admin, errorMsg} = action.payload
+
+            if(errorMsg){
+                state.errorMsg = errorMsg
+                return
+            }
+
+            state.loading = false
+            state.email = email
+            state.nickname = nickname
+            state.admin = admin
+
+            setCookie("login", JSON.stringify(action.payload), 1)
+            
+        })
+        .addCase(postLoginThunk.pending, (state, action) => {
+            console.log("pending")
+            state.loading = true
+        })
+        .addCase(postLoginThunk.rejected, (state, action) =>{
+            console.log("rejected")
+        })
+
     }
 })
 
-export const {requestLogin} = loginSlice.actions
+
 
 export default loginSlice.reducer
