@@ -26,28 +26,29 @@ const LoginComponent = () => {
                 {errorMsg ? <div className="bg-red-300">이메일과 패스워드를 확인하세요</div> : ''}
             </div>
             <div className="h-[40vh] bg-white w-[45vh] my-20 mx-auto">
-                <div className="pt-[15vh] px-2 ">
+                <div className="pt-5">이메일과 비밀번호를 <br/> 입력하세요</div>
+                <div className="pt-6 px-2 mt-16">
                     <div className="overflow-hidden ">
-                        <label className="float-left">email</label>
+                        <label className="mr-4">email</label>
                         <input type="text" name="email" 
-                        className="p-1 float-right border-2 border-black rounded text-center "
+                        className="p-1 border-b-2 border-black text-center "
                         value={loginInfo.email}
                         onChange={() => {}}>
                         </input>
                     </div>
-                    <div className="overflow-hidden">
-                        <label className="float-left">pw</label>
+                    <div className="">
+                        <label className="mr-6">pw</label>
                         <input type="password" name="pw" 
-                        className="p-1 float-right border-2 border-black rounded text-center"
+                        className="ml-3 p-1 border-b-2 border-black text-center"
                         value={loginInfo.pw}
                         onChange={() => {}}></input>
                     </div>
+                </div>
                     <div >
                         <button 
-                        className="mt-5 border-slate-700 border-2 p-2 "
+                        className="mt-16 border-slate-700 border-2 p-2 "
                         onClick={() => dispatch(postLoginThunk(loginInfo))}>LOGIN</button>
                     </div>
-                </div>
             </div>
         </div>
 
