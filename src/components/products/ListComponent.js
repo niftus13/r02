@@ -1,4 +1,4 @@
-import { createSearchParams } from "react-router-dom";
+
 import { getList } from "../../api/productAPI";
 import { useEffect, useState } from "react";
 import ListPageComponent from "../common/ListPageComponent";
@@ -25,9 +25,13 @@ const ListComponent = ({queryObj, movePage, moveRead}) => {
         getList(queryObj).then(data => {
             console.log(data)
             setListData(data)
+        }).catch(err => {
+            console.log("----------------------")
+            console.log(err)
         })
-
     },[queryObj])
+
+
     // use*** = 컴포넌트 안에서만. 아닐경우는 함수로 사용가능
     // console.log(createSearchParams(queryObj).toString())
 
