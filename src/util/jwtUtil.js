@@ -89,7 +89,7 @@ const responseFail = (err) => {
     return Promise.reject(err)
 }
 
-jwtAxios.interceptors.request.use(beforeReq,requestFail)
-jwtAxios.interceptors.response.use(beforeRes, responseFail)
+// jwtAxios.interceptors.request.use(beforeReq,requestFail)
+// jwtAxios.interceptors.response.use(beforeRes, responseFail)
 
 export default jwtAxios

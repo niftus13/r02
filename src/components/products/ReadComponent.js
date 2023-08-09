@@ -9,6 +9,8 @@ const initState = {
     pname:'',
     pdesc:'',
     price:0,
+    brand:'',
+    event:'',
     images:[]
 }
 
@@ -41,18 +43,16 @@ const ReadComponent = ({pno, moveModify, moveList}) => {
                 {product.pname}
                 </div>
                 <div className="m-2 p-2 border-2">
-                    {product.pdesc}
-                </div>
-                <div className="m-2 p-2 border-2">
                     {product.price}
                 </div>
                 <div className="m-2 p-2 border-2">
                     <ul>
-                        {product.images.map((fname,idx) => 
+                        {/* {product.images.map((fname,idx) => 
                         <li key={idx}>
                             <img src={`http://localhost/${fname}`}></img>
                         </li>
-                        )}
+                        )} */}
+                        <img src={`http://localhost/${product.brand}/${product.images}`}></img>
                     </ul>
                 </div>
                 <div>

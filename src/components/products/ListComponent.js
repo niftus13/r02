@@ -53,10 +53,10 @@ const ListComponent = ({queryObj, movePage, moveRead}) => {
                         >
                             <div className=" text-center">
                                 <div className="text-slate-800">
-                                    {dto.pno}
+                                    {dto.pno} , {dto.brand}
                                 </div>
                                 <div className="flex justify-center items-center">
-                                    <img src={`http://localhost/s_${dto.fname}`} alt="ddd"></img>
+                                    <img src={`http://localhost/${dto.brand}/${dto.uuid}_${dto.pfname}`} alt="noImage"></img>
                                 </div>
                                 <div className=" mt-20">
                                     <div className="justify-center text-center">{dto.pname} - {dto.price}</div> 
