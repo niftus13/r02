@@ -8,7 +8,7 @@ export const getList = async (queryObj) => {
     const res = await jwtAxios.get(`http://localhost:8080/api/products/list?${queryString}`)
 
     return res.data
-}
+}   
 
 export const postProduct = async (formData) => {
 
