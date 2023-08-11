@@ -61,7 +61,7 @@ const ListComponent = ({ queryObj, movePage, moveRead, moveSearch }) => {
                                     <div className=" mt-20">
                                         <div className="justify-center text-center">{dto.pname} - {dto.price}</div>
                                         <div>
-                                            {dto.reviewCnt} - {dto.reviewAvg}
+                                            {dto.replyCnt} - {dto.gradeAvg}
                                         </div>
                                     </div>
                                 </div>

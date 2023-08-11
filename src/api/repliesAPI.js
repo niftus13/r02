@@ -10,30 +10,30 @@ export const getRepliesOfBoard = async (bno, page = 1, last = false) => {
 
 export const postReply = async (reply) => {
 
-  const res = await axios.post('http://localhost:8080/api/replies/' , reply)
+  const res = await axios.post('http://localhost:8080/api/productreplies/' , reply)
 
   return res.data
 
 }
 
-export const getReply = async (rno) => {
+export const getReply = async (prno) => {
 
-  const res = await axios.get(`http://localhost:8080/api/replies/${rno}`)
+  const res = await axios.get(`http://localhost:8080/api/productreplies/${prno}`)
 
   return res.data
 
 }
 
-export const deleteReply = async (rno) => {
+export const deleteReply = async (prno) => {
 
-  const res = await axios.delete(`http://localhost:8080/api/replies/${rno}`)
+  const res = await axios.delete(`http://localhost:8080/api/productreplies/${prno}`)
 
   return res.data
 }
 
 export const putReply = async (reply) => {
 
-  const res = await axios.put(`http://localhost:8080/api/replies/${reply.rno}`, reply)
+  const res = await axios.put(`http://localhost:8080/api/productreplies/${reply.prno}`, reply)
 
   return res.data
 

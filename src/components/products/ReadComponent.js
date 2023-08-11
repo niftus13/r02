@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getProduct } from "../../api/productAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartThunk } from "../../reducers/cartSlice";
+import ReadReplyComponent from "./ReadReplyComponent";
 
 
 const initState = {
@@ -30,7 +31,6 @@ const ReadComponent = ({pno, moveModify, moveList}) => {
             setProduct(data)
         }).catch(e => {
             console.log(e)
-            moveList()
         })
 
     },[pno])
@@ -41,6 +41,10 @@ const ReadComponent = ({pno, moveModify, moveList}) => {
             <div className="m-2 p-2 text-white">
                 <div className="m-2 p-2 border-2">
                 {product.pname}
+                {/* {product} */}
+                </div>
+                <div className="m-2 p-2 border-2">
+                    {product.brand}
                 </div>
                 <div className="m-2 p-2 border-2">
                     {product.price}
@@ -52,7 +56,7 @@ const ReadComponent = ({pno, moveModify, moveList}) => {
                             <img src={`http://localhost/${fname}`}></img>
                         </li>
                         )} */}
-                        <img src={`http://localhost/${product.brand}/${product.images}`}></img>
+                        <img src={`http://localhost/${product.brand}/${product.images}`} alt="default"></img>
                     </ul>
                 </div>
                 <div>
